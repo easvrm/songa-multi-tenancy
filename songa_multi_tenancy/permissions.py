@@ -11,6 +11,7 @@ def get_user_tenant(user=None):
         "Tenant User",
         {"user": user, "status": "Active"},
         "tenant",
+        order_by="modified desc",
     )
 
 
@@ -129,6 +130,7 @@ def user_query(user):
         "Tenant User",
         {"user": user, "status": "Active"},
         "tenant",
+        order_by="modified desc",
     )
 
     if not tenant:
@@ -185,6 +187,7 @@ def user_has_permission(doc, ptype="read", user=None):
         "Tenant User",
         {"user": doc.name, "status": "Active"},
         "tenant",
+        order_by="modified desc",
     )
     current_tenant = get_user_tenant(user)
 
@@ -303,6 +306,7 @@ def sync_tenant_user(doc, method=None):
         "Tenant User",
         {"user": doc.name},
         "name",
+        order_by="modified desc",
     )
 
     if existing:
